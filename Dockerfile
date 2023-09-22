@@ -4,4 +4,4 @@ COPY ./dist/prancheta-fe/ /usr/share/nginx/html
 
 COPY default.conf /etc/nginx/conf.d
 EXPOSE 80
-CMD ["service", "nginx", "start"]
+CMD ["sh", "-c", "service nginx start; tail -f /dev/null"]
