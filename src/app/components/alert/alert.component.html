@@ -1,0 +1,14 @@
+<mat-card class="alert-card">
+    <mat-card-header>
+      <mat-card-title>{{title}}</mat-card-title>
+    </mat-card-header>
+    <mat-icon mat-card-image *ngIf="icon" aria-hidden="false" aria-label="Alert icon" [fontIcon]="icon" [color]="color" ></mat-icon>
+    <mat-card-content>
+      <p>
+        {{message}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="buttonText">
+      <button mat-button (click)="onButtonClick()" [color]="color">{{buttonText}}</button>
+    </mat-card-actions>
+  </mat-card>

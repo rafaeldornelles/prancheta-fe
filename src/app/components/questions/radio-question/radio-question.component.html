@@ -1,0 +1,10 @@
+<p>radio-question works!</p>
+<label id="radio-question">{{question.caput}}</label>
+<mat-radio-group
+  aria-labelledby="radio-question"
+  [formControl]="control">
+    <mat-radio-button *ngFor="let option of question.options" class="example-radio-button" [value]="option.text">
+        <img *ngIf="option.image" [src]="option.image" [alt]="option.text">
+        {{option.text}}
+    </mat-radio-button>
+</mat-radio-group>

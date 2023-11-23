@@ -1,0 +1,13 @@
+<p>multiple-question works!</p>
+<section class="example-section" [formGroup]="control">
+    <label>{{question.caput}}</label>
+    <p><mat-checkbox *ngFor="let option of question.options" [formControlName]="option.text">
+        {{option.text}}
+        <img *ngIf="option.image" [src]="option.image" [alt]="option.text">
+    </mat-checkbox></p>
+</section>
+  
+  <section class="example-section" [formGroup]="control">
+    <h4>You chose:</h4>
+    {{control.value | json}}
+  </section>

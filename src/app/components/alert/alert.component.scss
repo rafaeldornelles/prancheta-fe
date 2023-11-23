@@ -1,0 +1,22 @@
+.alert-card {
+    max-width: 700px;
+    margin: 3em auto;
+}
+
+mat-icon {
+    font-size: 10em;
+    width: auto;
+    height: auto;
+    margin: .05em auto;
+    filter: opacity(.75);
+}
+
+mat-card-header, mat-card-content, mat-card-actions {
+    justify-content: center;
+    text-align: center;
+}
+
+mat-card-title{
+    font-weight: 600;
+    text-transform: capitalize;
+}

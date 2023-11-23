@@ -1,0 +1,30 @@
+<div class="container">    
+    <div *ngIf="loading" class="spinner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+    
+    <div *ngIf="error">
+        <app-alert title="Erro ao acessar o briefing!" message="Não foi possível acessar o briefing. Verifique se o mesmo já foi respondido ou se o link é válido." icon="warning" buttonText="Tente novamente" (buttonClick)="refresh()"></app-alert>
+    </div>
+    
+    <div *ngIf="success">
+        <app-alert title="Sucesso!" message="Seu briefing foi enviado com sucesso" color="primary" icon="done"></app-alert>
+    </div>
+    
+    <div *ngIf="briefing && !loading && !error && !success">
+        <div *ngFor="let question of briefing.questions">
+            <p>{{question.questionType}}</p>
+            <div *ngIf="question.questionType == 'text' || question.questionType == 'number' || question.questionType == 'currency'">
+                <app-text-question [question]="question" [control]="getControlByQuestionId(question._id)"></app-text-question>
+            </div>
+            <div *ngIf="question.questionType == 'single'">
+                <app-radio-question [question]="question" [control]="getControlByQuestionId(question._id)"></app-radio-question>
+            </div>
+            <div *ngIf="question.questionType == 'multiple'">
+                <app-multiple-question [question]="question" [control]="getControlByQuestionId(question._id)"></app-multiple-question>
+            </div>
+            <hr>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="!isButtonEnabled()" (click)="submitAnswers()">Enviar</button>
+    </div>
+</div>

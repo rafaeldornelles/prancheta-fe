@@ -1,0 +1,8 @@
+<label [for]="question._id">{{question.caput}}</label>
+<mat-form-field >
+    <mat-label>Resposta</mat-label>
+    <span matPrefix *ngIf="question.questionType == 'currency'">R$ &nbsp;</span>
+    <input matInput type="text" [inputmode]="questionInput" [formControl]="control" maxlength="24" [id]="question._id" [placeholder]="question.placeholder||''">
+    <mat-error>Campo Obrigatório</mat-error>
+    <span matSuffix *ngIf="question.trailingText">{{question.trailingText}} &nbsp;</span>
+</mat-form-field>
