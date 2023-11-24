@@ -1,13 +1,11 @@
-<p>multiple-question works!</p>
-<section class="example-section" [formGroup]="control">
-    <label>{{question.caput}}</label>
-    <p><mat-checkbox *ngFor="let option of question.options" [formControlName]="option.text">
-        {{option.text}}
-        <img *ngIf="option.image" [src]="option.image" [alt]="option.text">
-    </mat-checkbox></p>
+<section class="multiple-question" [formGroup]="control">
+    <div class="question-caput">
+        <label id="radio-question"><span class="pergunta">Pergunta: </span>{{question.caput}}</label>
+    </div>
+    <div class="option-container"><mat-checkbox *ngFor="let option of question.options" [formControlName]="option.text">
+        <div class="option-content">
+            <img *ngIf="option.image" [src]="option.image" [alt]="option.text">
+            <p>{{option.text}}</p>
+        </div>
+    </mat-checkbox></div>
 </section>
-  
-  <section class="example-section" [formGroup]="control">
-    <h4>You chose:</h4>
-    {{control.value | json}}
-  </section>

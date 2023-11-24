@@ -21,6 +21,8 @@ import { InputmodeDirective } from './components/directives/inputmode.directive'
 import { RadioQuestionComponent } from './components/questions/radio-question/radio-question.component';
 import { MultipleQuestionComponent } from './components/questions/multiple-question/multiple-question.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { FeedbackPageComponent } from './pages/feedback-page/feedback-page.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AlertComponent } from './components/alert/alert.component';
     InputmodeDirective,
     RadioQuestionComponent,
     MultipleQuestionComponent,
-    AlertComponent
+    AlertComponent,
+    ProjectPageComponent,
+    FeedbackPageComponent
     ],
   imports: [
     BrowserModule,

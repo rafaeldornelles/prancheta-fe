@@ -5,6 +5,7 @@ import { map, mergeMap } from 'rxjs';
 import { AnswerBriefingRequest } from 'src/app/model/AnswerBriefingRequest';
 import { Briefing } from 'src/app/model/Briefing';
 import { QuestionType } from 'src/app/model/Question';
+import { User } from 'src/app/model/User';
 import { BriefingService } from 'src/app/services/briefing.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class AnswerBriefingComponent implements OnInit {
   formGroup = new FormGroup({})
   key?: string
   success = false
+  showCard= true
 
   constructor(
     private briefingService: BriefingService,
@@ -77,7 +79,6 @@ export class AnswerBriefingComponent implements OnInit {
     })
     const payload = <AnswerBriefingRequest>{
       key: this.key,
-      briefing: this.briefing!._id,
       answers: answers
     }
     this.loading = true
@@ -95,6 +96,13 @@ export class AnswerBriefingComponent implements OnInit {
 
   refresh(){
     location.reload()
+  }
+
+  get senderName() {
+    const sender = this.briefing?.sender as User
+    if(sender && typeof sender == "object")
+    return `${sender.firstName} ${sender.lastName}`
+    return ""
   }
 
 }

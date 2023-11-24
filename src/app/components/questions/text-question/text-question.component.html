@@ -1,4 +1,6 @@
-<label [for]="question._id">{{question.caput}}</label>
+<div class="question-caput">
+    <label [for]="question._id"><span class="pergunta">Pergunta: </span>{{question.caput}}</label>
+</div>
 <mat-form-field >
     <mat-label>Resposta</mat-label>
     <span matPrefix *ngIf="question.questionType == 'currency'">R$ &nbsp;</span>

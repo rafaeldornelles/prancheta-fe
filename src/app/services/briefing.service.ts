@@ -7,7 +7,7 @@ import { AnswerBriefingRequest } from '../model/AnswerBriefingRequest';
   providedIn: 'root'
 })
 export class BriefingService {
-  base_url = "https://prancheta-be.azurewebsites.net/"
+  base_url = "https://prancheta-be.azurewebsites.net"
   constructor(
     private http: HttpClient
   ) { }

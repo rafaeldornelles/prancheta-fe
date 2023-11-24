@@ -1,3 +1,36 @@
-img {
-    width: 250px;
+mat-radio-group{
+    margin-bottom: 3em;
+}
+
+.question-caput {
+    margin: 1em 0;
+}
+
+.pergunta{
+    font-weight: 500;
+}
+
+.option-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.option-content img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.option-content p {
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+mat-radio-group {
+    display: grid;
+    grid-column-gap: 2em;
+    grid-row-gap: 1em;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }

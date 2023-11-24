@@ -12,8 +12,20 @@
     </div>
     
     <div *ngIf="briefing && !loading && !error && !success">
+        <mat-card class="briefing-card" *ngIf="showCard">
+            <mat-card-header>
+                <mat-card-title>Responder briefing</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Olá, {{briefing.client.name}}!</p>
+                <p>Após a sua manifestação de interesse em realizar um projeto, o arquiteto {{senderName}} lhe enviou um formulário de briefing. O objetivo deste formulário é captar seus gostos e expectativas para o projeto a ser possivelmente realizado.</p>
+                <p>Por favor, responda a todas as perguntas e quando terminar, clique em enviar.</p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button (click)="showCard=false">Fechar</button>
+            </mat-card-actions>
+        </mat-card>
         <div *ngFor="let question of briefing.questions">
-            <p>{{question.questionType}}</p>
             <div *ngIf="question.questionType == 'text' || question.questionType == 'number' || question.questionType == 'currency'">
                 <app-text-question [question]="question" [control]="getControlByQuestionId(question._id)"></app-text-question>
             </div>
@@ -23,8 +35,9 @@
             <div *ngIf="question.questionType == 'multiple'">
                 <app-multiple-question [question]="question" [control]="getControlByQuestionId(question._id)"></app-multiple-question>
             </div>
-            <hr>
         </div>
-        <button mat-raised-button color="primary" [disabled]="!isButtonEnabled()" (click)="submitAnswers()">Enviar</button>
+        <div class="button-container">
+            <button mat-raised-button color="primary" [disabled]="!isButtonEnabled()" (click)="submitAnswers()">Enviar</button>
+        </div>
     </div>
 </div>
