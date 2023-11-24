@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Visitas à obra</h1>
+<div mat-dialog-content>
+    <mat-accordion *ngIf="steps.length">
+        <mat-expansion-panel *ngFor="let step of steps">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{step.date| date:'dd/MM/y'}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p><span class="bold">Descrição: </span>{{step.text}}</p>
+            <div *ngIf="step.imgs && step.imgs.length">
+                <h4>Fotos</h4>
+                <div class="img-container">
+                    <img *ngFor="let image of step.imgs" [src]="baseUrl + image" alt="Imagem da visita">
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div *ngIf="!steps.length">
+        <p>Não há visitas para exibir</p>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Fechar</button>
+</div>

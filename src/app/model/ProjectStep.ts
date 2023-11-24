@@ -1,7 +1,8 @@
 import { Project } from "./Project"
 
 export interface ProjectStep {
-    text: String
+    _id: string
+    text: string
     date: Date
     imgs?: String[]
     type: ProjectStepType

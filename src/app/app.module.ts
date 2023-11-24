@@ -12,6 +12,8 @@ import { MatInputModule } from "@angular/material/input"
 import { MatRadioModule } from "@angular/material/radio"
 import { MatButtonModule } from "@angular/material/button"
 import { MatCheckboxModule } from "@angular/material/checkbox"
+import { MatDialogModule } from "@angular/material/dialog"
+import { MatExpansionModule } from "@angular/material/expansion"
 import { MatIconModule } from "@angular/material/icon"
 import { MatCardModule } from "@angular/material/card"
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -23,6 +25,8 @@ import { MultipleQuestionComponent } from './components/questions/multiple-quest
 import { AlertComponent } from './components/alert/alert.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { FeedbackPageComponent } from './pages/feedback-page/feedback-page.component';
+import { DialogBriefingComponent } from './components/dialog-briefing/dialog-briefing.component';
+import { DialogConstructionComponent } from './components/dialog-construction/dialog-construction.component';
 
 
 @NgModule({
@@ -35,7 +39,9 @@ import { FeedbackPageComponent } from './pages/feedback-page/feedback-page.compo
     MultipleQuestionComponent,
     AlertComponent,
     ProjectPageComponent,
-    FeedbackPageComponent
+    FeedbackPageComponent,
+    DialogBriefingComponent,
+    DialogConstructionComponent
     ],
   imports: [
     BrowserModule,
@@ -50,7 +56,9 @@ import { FeedbackPageComponent } from './pages/feedback-page/feedback-page.compo
     MatCheckboxModule, 
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
     provideAnimations()

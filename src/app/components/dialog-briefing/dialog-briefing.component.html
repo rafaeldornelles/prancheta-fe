@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Respostas Briefing</h1>
+<div mat-dialog-content>
+    <p>Respondido em {{briefing.answeredAt}}</p>
+  <p>Perguntas e respostas do briefing:</p>
+  <br>
+  <div *ngFor="let question of briefing.questions" class="question">
+    <p><span class="bold">Pergunta: </span>{{question.caput}}</p>
+    <p><span class="bold">Resposta: </span>{{question.answer}}</p>
+    <img *ngFor="let image of images(question)" [src]="image" alt="image">
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Fechar</button>
+</div>

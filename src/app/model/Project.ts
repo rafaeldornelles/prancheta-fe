@@ -5,8 +5,8 @@ import { User } from "./User"
 export interface Project {
     _id: string,
     name: string,
-    user: User|string,
+    user: User,
     createdAt: Date,
-    briefing: Briefing|String
-    steps: (String|ProjectStep)[]
+    briefing: Briefing
+    steps: ProjectStep[]
 }

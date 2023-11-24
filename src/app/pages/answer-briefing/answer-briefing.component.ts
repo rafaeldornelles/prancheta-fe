@@ -37,8 +37,10 @@ export class AnswerBriefingComponent implements OnInit {
     ).subscribe({
       next: (briefing) => {
         this.briefing = briefing
-        console.log(this.briefing)
         this.loading = false
+        if(briefing.questions.some(q => !!q.answer)) {
+          this.error = true
+        }
         this.initFormGroup()
       },
       error: (err) => {

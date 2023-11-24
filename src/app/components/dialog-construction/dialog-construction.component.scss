@@ -1,0 +1,15 @@
+.bold {
+    font-weight: 500;
+}
+
+.img-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1em;
+}
+
+img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}

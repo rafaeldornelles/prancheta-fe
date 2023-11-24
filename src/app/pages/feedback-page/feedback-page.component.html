@@ -1,3 +1,41 @@
-<p>feedback-page works!</p>
-<textarea [formControl]="control"></textarea>
-<button mat-raised-button color="primary" [disabled]="!control.valid" (click)="submit()">enviar</button>
+<div class="container">
+    <div *ngIf="loading" class="spinner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+    
+    <div *ngIf="error">
+        <app-alert *ngIf="!sent" title="Erro ao acessar o feedback!" message="Não foi possível acessar o feedback. Verifique se o mesmo já foi respondido, se o projeto é válido ou se o link é válido." icon="warning" buttonText="Tente novamente" (buttonClick)="refresh()"></app-alert>
+        <app-alert *ngIf="sent" title="Erro ao enviar o feedback!" message="Não foi possível enviar o feedback. Verifique se o mesmo já foi respondido ou se o link é válido." icon="warning" buttonText="Tente novamente" (buttonClick)="refresh()"></app-alert>
+    </div>
+    
+    <div *ngIf="success">
+        <app-alert title="Sucesso!" message="Seu feedback foi enviado com sucesso" color="primary" icon="done"></app-alert>
+    </div>
+    
+    <div *ngIf="project && !loading && !error && !success">
+        <mat-card class="feedback-card" *ngIf="showCard">
+            <mat-card-header>
+                <mat-card-title>Enviar Feedback</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Olá, {{clientName}}!</p>
+                <p>Após a conclusão do seu projeto, o arquiteto {{senderName}} lhe enviou uma requisição para o envio de um feedback sobre o projeto entregue e os serviços prestados.</p>
+                <p>Por favor, preencha o que você achou do serviço e depois clique em enviar.</p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button (click)="showCard=false">Fechar</button>
+            </mat-card-actions>
+        </mat-card>
+        
+
+        <h3>Deixe seu feedback!</h3>
+        <mat-form-field class="textarea-wrapper">
+            <mat-label>feedback</mat-label>
+            <textarea matInput [formControl]="control"></textarea>
+          </mat-form-field>
+          <div class="button-wrapper">
+              <button mat-raised-button color="primary" [disabled]="!control.valid" (click)="submit()">enviar</button>
+          </div>
+    </div>
+</div>
+

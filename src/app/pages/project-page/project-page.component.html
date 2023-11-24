@@ -1,1 +1,67 @@
-<p>project-page works!</p>
+<div class="container">
+    <div *ngIf="loading" class="spinner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+    
+    <div *ngIf="error">
+        <app-alert title="Erro ao acessar o projeto!" message="Não foi possível acessar o projeto. Verifique se o link é válido." icon="warning" buttonText="Tente novamente" (buttonClick)="refresh()"></app-alert>
+    </div>
+
+    <div *ngIf="project && !error && !loading">
+        <mat-card class="feedback-card" *ngIf="showCard">
+            <mat-card-header>
+                <mat-card-title>Projeto</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Olá, {{clientName}}!</p>
+                <p>Aqui vão aparecer as informações do seu projeto com {{archName}}.</p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button (click)="showCard=false">Fechar</button>
+            </mat-card-actions>
+        </mat-card>
+        <h3>Dados do projeto</h3>
+        <dl>
+            <div class="info">
+                <dt>Arquiteto: </dt>
+                <dd>{{archName}}</dd>
+            </div>
+            <div class="info">
+                <dt>E-mail: </dt>
+                <dd>{{project.user.email}}</dd>
+            </div>
+            <div class="info">
+                <dt>Data de Início</dt>
+                <dd>{{project.createdAt | date:'dd/MM/y'}}</dd>
+            </div>
+        </dl>
+
+        <div class="project-cards">
+            <mat-card class="briefing-card" (click)="openBriefingDialog()">
+                <mat-card-header>
+                    <mat-card-title>Briefing</mat-card-title>
+                    <mat-card-subtitle>Ver respostas</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+            <mat-card class="visitation-card" (click)="openContructionDialog()">
+                <mat-card-header>
+                    <mat-card-title>Acompanhamento de Obra</mat-card-title>
+                    <mat-card-subtitle>Ver informações sobre visitas</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+            <mat-card class="feedback-card" *ngIf="isFeedbackAvaliable" routerLink="/client/project-feedback" [queryParams]="{key: key}">
+                <mat-card-header>
+                    <mat-card-title>Feedback</mat-card-title>
+                    <mat-card-subtitle>Feedback disponível</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+            <mat-card class="feedback-card" *ngIf="!isFeedbackAvaliable">
+                <mat-card-header>
+                    <mat-card-title>Feedback</mat-card-title>
+                    <mat-card-subtitle>Feedback indisponível</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </div>
+
+    </div>
+</div>
